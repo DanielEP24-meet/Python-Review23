@@ -15,13 +15,22 @@ def create_youtube_video(title : str , description : str , hashtags : list) -> d
 
 
 def like(yt_vid : dict) -> dict:
-	yt_vid["like"] += 1
-	return yt_vid
+	if "like" in yt_vid:
+		yt_vid["like"] += 1
+		return yt_vid
+	else:
+		yt_vid["like"] = 1
+		return yt_vid
+
 
 
 def dislike(yt_vid : dict) -> dict:
-	yt_vid["dislike"] += 1
-	return yt_vid
+	if "like" in yt_vid:
+		yt_vid["dislike"] += 1
+		return yt_vid
+	else:
+		yt_vid["dislike"] = 1
+		return yt_vid
 
 
 def add_comment(yt_vid : dict , username : str , comment_content : str) -> dict:
@@ -43,7 +52,7 @@ def check_precentage_of_hashtags(yt_vid1 : list , yt_vid2 : list) -> float:
 
 #In order to add 495 likes I would use Either Recursion or a for loop, since we are using python I chose the for loop
 video = create_youtube_video("A video with 495 likes" , "one day this video wil have 495 likes!!!" , ["#amazingvid" , "#inlove"])
-video1 = create_youtube_video("A video " , "I Have the same hashtags as the video above me(or do I?)" , ["#amazingvid" , "#inlove" , "#fyp" , "amamama" , "amamamamamama"])
+video1 = create_youtube_video("A video " , "I Have the same hashtags as the video above me(or do I?)" , ["#amazingvid" , "#inlove" , "#fyp"])
 for i in range(0,495):
 	video = like(video)
 
